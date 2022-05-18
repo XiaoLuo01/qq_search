@@ -16,6 +16,7 @@ module.exports = {
     // Custom rules
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
     'linebreak-style': 'off',
+    'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-var-requires': 'off',
