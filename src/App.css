@@ -13,3 +13,26 @@ html body #root .App {
 .mb-30 {
   margin-bottom: 30px;
 }
+
+.red {
+  color: red;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.positipn-r {
+  position: relative;
+}
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

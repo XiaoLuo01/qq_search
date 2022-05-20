@@ -1,18 +1,31 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
+import { QQItem } from 'types';
+import Empty from 'components/Empty';
 
-interface ItemProps {}
+interface ItemProps {
+  data?: QQItem;
+  setImgLoaded?: (loaded: boolean) => void;
+}
 
-const Item: React.FC<ItemProps> = () => {
-  useEffect(() => {}, []);
+const Item: React.FC<ItemProps> = ({ data, setImgLoaded }) => {
+  const handleLoad = () => {
+    setImgLoaded && setImgLoaded(true);
+  };
   return (
-    <ItemWrap>
-      <ImgWrap src="https://qlogo2.store.qq.com/qzone/774740085/774740085/100" alt="" />
-      <TextWrap>
-        <div className="mb-5">紫罗兰</div>
-        <div>1428620591</div>
-      </TextWrap>
-    </ItemWrap>
+    <>
+      {data?.name ? (
+        <ItemWrap>
+          <ImgWrap src={data?.qlogo} alt="" onLoad={handleLoad} />
+          <TextWrap>
+            <div className="mb-5" dangerouslySetInnerHTML={{ __html: data?.name }}></div>
+            <div>{data?.qq}</div>
+          </TextWrap>
+        </ItemWrap>
+      ) : (
+        <Empty />
+      )}
+    </>
   );
 };
 
@@ -38,6 +51,7 @@ const ImgWrap = styled.img`
 const TextWrap = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100px;
 `;
 
 export default Item;
