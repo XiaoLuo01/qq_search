@@ -4,7 +4,7 @@ import SvgIcon from './SvgIcon';
 
 interface EmptyProps {}
 
-const Empty: React.FC<EmptyProps> = props => {
+const Empty: React.FC<EmptyProps> = () => {
   return (
     <EmptyWrap>
       <SvgIcon iconClass="empty" fill="#eee" />
