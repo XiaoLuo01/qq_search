@@ -9,7 +9,7 @@ interface State<D> {
 const defaultInitialState: State<null> = {
   error: null,
   data: null,
-  stat: 'success',
+  stat: 'loading',
 };
 
 export const useAsync = <D>(initialState?: State<D>) => {

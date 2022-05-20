@@ -51,16 +51,22 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
+    "@testing-library/react-hooks": "^8.0.0",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "husky": "^8.0.1",
+    "jest-watch-typeahead": "^0.6.5",
     "lint-staged": "^12.4.1",
+    "msw": "^0.40.1",
     "prettier": "2.6.2"
   },
   "lint-staged": {
     "*.{js,css,md,ts,tsx}": "prettier --write"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

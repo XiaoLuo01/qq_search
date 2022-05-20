@@ -16,9 +16,7 @@ interface InputProps {
   /* error text */
   errorText?: string;
   /* onChange event  */
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  /* onKeyUp event  */
-  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   /* clear value */
   onClear?: () => void;
 }
@@ -31,28 +29,27 @@ const Input: React.FC<InputProps> = ({
   value,
   errorText,
   onChange,
-  onKeyUp,
   onClear,
 }) => {
   return (
     <div className="flex-col positipn-r">
       <InputWrap>
         <input
+          data-testid="input"
           className={className}
           style={style}
           type={type}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          onKeyUp={onKeyUp}
         />
         {value && onClear && (
-          <span onClick={onClear}>
+          <span data-testid="clearIcon" onClick={onClear}>
             <SvgIcon iconClass="clear" fill="#ddd" />
           </span>
         )}
       </InputWrap>
-      {errorText && <ErrorWrap>{errorText}</ErrorWrap>}
+      {errorText && <ErrorWrap data-testid="error">{errorText}</ErrorWrap>}
     </div>
   );
 };
