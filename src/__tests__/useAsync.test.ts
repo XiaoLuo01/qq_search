@@ -5,8 +5,9 @@ import { act } from 'react-dom/test-utils';
 const defaultState: ReturnType<typeof useAsync> = {
   error: null,
   data: null,
-  stat: 'loading',
-  isLoading: true,
+  stat: 'idle',
+  isIdle: true,
+  isLoading: false,
   isError: false,
   isSuccess: false,
 
@@ -15,9 +16,18 @@ const defaultState: ReturnType<typeof useAsync> = {
   setError: expect.any(Function),
 };
 
+const loadingState: ReturnType<typeof useAsync> = {
+  ...defaultState,
+  stat: 'loading',
+  isIdle: false,
+  isLoading: true,
+  isSuccess: false,
+};
+
 const successState: ReturnType<typeof useAsync> = {
   ...defaultState,
   stat: 'success',
+  isIdle: false,
   isLoading: false,
   isSuccess: true,
 };
@@ -36,7 +46,7 @@ test('useAsync can handle asynchronous', async () => {
   act(() => {
     p = result.current.sendHttp(promise);
   });
-  expect(result.current).toEqual(defaultState);
+  expect(result.current).toEqual(loadingState);
 
   const resolvedValue = { mockValue: 'resolved' };
   await act(async () => {

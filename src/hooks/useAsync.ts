@@ -3,13 +3,13 @@ import { useCallback, useState } from 'react';
 interface State<D> {
   error: Error | null;
   data: D | null;
-  stat: 'loading' | 'error' | 'success';
+  stat: 'idle' | 'loading' | 'error' | 'success';
 }
 
 const defaultInitialState: State<null> = {
   error: null,
   data: null,
-  stat: 'loading',
+  stat: 'idle',
 };
 
 export const useAsync = <D>(initialState?: State<D>) => {
@@ -56,6 +56,7 @@ export const useAsync = <D>(initialState?: State<D>) => {
   );
 
   return {
+    isIdle: state.stat === 'idle',
     isLoading: state.stat === 'loading',
     isError: state.stat === 'error',
     isSuccess: state.stat === 'success',

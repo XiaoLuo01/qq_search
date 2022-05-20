@@ -14,7 +14,6 @@ const Home: React.FC<HomeProps> = () => {
   const [qq, setQq] = useState<string>('');
   const [qqInfo, setQqInfo] = useState<QQItem | null>();
   const [errText, setErrText] = useState('');
-  const [imgLoaded, setImgLoaded] = useState(false);
 
   const client = useHttp();
   const { sendHttp, isLoading, isError, error } = useAsync<QQItem>();
@@ -64,9 +63,9 @@ const Home: React.FC<HomeProps> = () => {
         />
       </div>
       <div>
-        {isLoading && imgLoaded && <Loading />}
+        {isLoading && <Loading />}
         {isError && <div className="red">{error?.message}</div>}
-        {qqInfo && <Item data={qqInfo} setImgLoaded={setImgLoaded} />}
+        {qqInfo && <Item data={qqInfo} />}
       </div>
     </Wrapper>
   );

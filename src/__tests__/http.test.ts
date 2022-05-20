@@ -1,4 +1,4 @@
-import { http } from './../hooks/http';
+import { http } from '../hooks/http';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 

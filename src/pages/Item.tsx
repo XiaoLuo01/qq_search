@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { QQItem } from 'types';
 import Empty from 'components/Empty';
+import SvgIcon from 'components/SvgIcon';
+import classNames from 'classnames';
 
 interface ItemProps {
   data?: QQItem;
-  setImgLoaded?: (loaded: boolean) => void;
 }
 
-const Item: React.FC<ItemProps> = ({ data, setImgLoaded }) => {
+const Item: React.FC<ItemProps> = ({ data }) => {
+  const [imgLoading, setImgLoading] = useState(true);
   const handleLoad = () => {
-    setImgLoaded && setImgLoaded(true);
+    setImgLoading(false);
   };
   return (
     <>
       {data?.name ? (
         <ItemWrap>
-          <ImgWrap src={data?.qlogo} alt="" onLoad={handleLoad} />
+          {imgLoading && <SvgIcon iconClass="qq" />}
+          <ImgWrap className={classNames({ hidden: imgLoading })} src={data?.qlogo} alt="" onLoad={handleLoad} />
           <TextWrap>
             <div className="mb-5" dangerouslySetInnerHTML={{ __html: data?.name }}></div>
             <div>{data?.qq}</div>
